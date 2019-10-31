@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<title>Estacione Seguro, estacione Melhor</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body onload="relogio();">
+<h1 id="titulo">Estacione Seguro, Estacione Melhor</h1>
+<div class="box">
+    
+    <div class="botao">
+        <div id="divBot">
+        <button  onclick="adicionarCarro(vagaSelecionada)" class="button" id="Bot" >
+            <span>
+            <img src="https://image.flaticon.com/icons/png/512/89/89111.png" alt="Adicionar carro" width="25px" height="25px">
+            <img src="plus.png" alt="Adicionar carro" width="10px" height="10px" class="plus">
+            <p><b>Adicionar</b></p>
+            </span>
+        </button>
+        
+        </div>
+        <div id="divBot1">
+        <button onclick="removerCarro(vagaSelecionada)" class="button1" id="Bot1" >
+            <span>
+            <img src="https://image.flaticon.com/icons/png/512/89/89111.png" alt="Remover carro" width="25px" height="25px">
+            <img src="menos.png" alt="Remover carro" width="10px" height="10px" class="plus">
+            <p><b>Remover</b></p>
+            </span>
+        </button>
+        
+        </div>
+    </div>
+<div class="tabela">
+    <table>
+        <thead>
+            <tr>
+                <th> </th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+                <th>10</th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th> </th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+                <th>10</th>
+                <th> </th>
+            </tr>
+        </tfoot>
+        <tbody id="fora">
+            <tr>
+                <th>A</th>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga1" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga2" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga3" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga4" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga5" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga6" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga7" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga8" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga9" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga10" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <th>A</th>
+            </tr>
+            <tr>
+                <th>B</th>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga11" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga12" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga13" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga14" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga15" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga16" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga17" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga18" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga19" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga20" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <th>B</th>
+            </tr>
+            <tr>
+                <th>C</th>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga21" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga22" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga23" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga24" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga25" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga26" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga27" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga28" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga29" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga30" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <th>C</th>
+            </tr>
+            <tr>
+                <th>D</th>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga31" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga32" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga33" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga34" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga35" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga36" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga37" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga38" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga39" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga40" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <th>D</th>
+            </tr>
+            <tr>
+                <th>E</th>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga41" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga42" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga43" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga44" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga45" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga46" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga47" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga48" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga49" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga50" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <th>E</th>
+            </tr>
+            <tr>
+                <th>F</th>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga51" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga52" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga53" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga54" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga55" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga56" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga57" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga58" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga59" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga60" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <th>F</th>
+            </tr>
+            <tr>
+                <th>G</th>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga61" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga62" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga63" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga64" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga65" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga66" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga67" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga68" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga69" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga70" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <th>G</th>
+            </tr>
+            <tr>
+                <th>H</th>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga71" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga72" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga73" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga74" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga75" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga76" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga77" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga78" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga79" src="https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png" alt="carro" height="25px" width="25px"></a></td>
+                <td><a onclick="mostraBotao()" class="linkCelula"><img id="vaga80" src="https://image.flaticon.com/icons/png/512/89/89111.png" alt="carro" height="25px" width="25px"></a></td>
+                <th>H</th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="info">
+    <div id="relogio"></div>
+    <div id="texto1">
+        <h2 style="margin-top: 0%;">Vagas: 79</h2>
+    </div>
+    <div id="texto">
+        <h3 style="margin-top: 2%;">Dados da vaga selecionada</h3>
+        <p>Placa: - </p>
+        <p>Modelo: - </p>
+        <p>Vaga: - </p>
+        <p>Hora que chegou: 00:00</p>
+        <p>Tempo que está aqui: 00:00</p>
+        <p>Valor a pagar: R$ 0,00</p>
+    </div>
+    
+</div>
+</div>
+
+<div id="myModal" class="modal">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h1>Adicionar Carro</h1>
+      </div>
+      <div class="modal-body">
+        <p>Placa: </p><input type="text" name="placa">
+        <p>Modelo: </p><input type="text" name="modelo">
+        <p>Vaga: - </p>
+        <p>Hora que chegou: 00:00</p>
+      </div>
+      <div class="modal-footer">
+        <button>Adicionar</button>
+      </div>
+    </div>
+  
+  </div>
+
+    <script>
+        var vagaSelecionada = "";
+        function adicionarCarro(vagaSelecionada){
+            var img = document.getElementById(vagaSelecionada);
+            img.src = "https://image.flaticon.com/icons/png/512/89/89111.png";
+        }
+
+        function removerCarro(vagaSelecionada){
+
+            var img = document.getElementById(vagaSelecionada);
+            img.src = "https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png";
+            
+        }
+
+        
+
+
+        function mostraBotao(el) {
+            var src = document.getElementById(el).src;
+            if(src == 'https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png'){
+                
+                document.getElementById("divBot").style.display = 'block'; 
+                document.getElementById("divBot1").style.display = 'none';
+                }
+            else{
+                document.getElementById("divBot1").style.display = 'block';
+                document.getElementById("divBot").style.display = 'none'; 
+                }
+
+        }
+
+        
+
+        var el = document.getElementById('fora');
+                el.addEventListener('click', function(e) {
+                    mostraBotao(e.target.id);
+                    vagaSelecionada = e.target.id;
+            });
+
+
+        /*function mostraDados(){
+
+            var el = document.getElementById('fora');
+                el.addEventListener('click', function(e) {
+                alert(e.target.id);
+                });
+
+            
+        
+            var data = new Date();
+            var horas = data.getHours();
+            var minutos = data.getMinutes ();
+
+            if (horas <10 ) {
+                horas= "0"+ horas;
+            }
+            if (minutos <10) {
+                minutos = "0"+ minutos;
+            }
+
+            document.getElementById("texto").innerHTML = "<h3 style='margin-top: 0%;'>Dados da vaga selecionada</h3><p>Placa: AXT-1775</p><p>Modelo: Tucson</p><p>Vaga: 7E</p><p>Hora que chegou: "+horas+":"+minutos+"</p><p>Tempo que está aqui: "+horas+":"+minutos+"</p><p>Valor a pagar: R$ 0,00</p>";
+        
+        }*/
+        
+        var carro = {
+            placa: "Não informado",
+            modelo: "Não informado",
+            vaga: "Não informado",
+            tempo: [0,0,0]
+        }
+
+        function relogio(){
+            var data = new Date();
+            var horas = data.getHours();
+            var minutos = data.getMinutes ();
+            
+            if (horas <10 ) {
+                horas= "0"+ horas;
+            }
+            if (minutos <10) {
+                minutos = "0"+ minutos;
+            }
+
+            document.getElementById("relogio").innerHTML ="<h2 class='relogio'>"+horas+":"+minutos+"</h2>";
+            setInterval(relogio, 60000);
+        }
+
+
+        var modal = document.getElementById("myModal");
+
+
+        var btn = document.getElementById("Bot");
+
+
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+        modal.style.display = "block";
+        }
+
+
+        span.onclick = function() {
+        modal.style.display = "none";
+        }
+
+
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        }
+</script>
+
+    </script>
+</body>
+</html>
