@@ -11,7 +11,7 @@
     
     <div class="botao">
         <div id="divBot">
-        <button  onclick="adicionarCarro(vagaSelecionada)" class="button" id="Bot" >
+        <button class="button" id="Bot" >
             <span>
             <img src="https://image.flaticon.com/icons/png/512/89/89111.png" alt="Adicionar carro" width="25px" height="25px">
             <img src="plus.png" alt="Adicionar carro" width="10px" height="10px" class="plus">
@@ -184,7 +184,8 @@
 <div class="info">
     <div id="relogio"></div>
     <div id="texto1">
-        <h2 style="margin-top: 0%;">Vagas: 79</h2>
+        <h3 style="margin-top: 0%;">Vagas livres: 80</h3>
+        <h3>Vagas ocupadas: 0</h3>
     </div>
     <div id="texto">
         <h3 style="margin-top: 2%;">Dados da vaga selecionada</h3>
@@ -192,14 +193,12 @@
         <p>Placa: - </p>
         <p>Modelo: - </p>
         <p>Hora que chegou: 00:00</p>
-        <p>Tempo que está aqui: 00:00</p>
-        <p>Valor a pagar: R$ 0,00</p>
     </div>
     
 </div>
 </div>
 
-<div id="myModal" class="modal">
+<div id="modalAdicionar" class="modal">
 
 
     <div class="modal-content">
@@ -224,6 +223,11 @@
   </div>
 
     <script> 
+        //mostra o total de vagas livres no inicio
+        var totalVagaslivres = 80;
+        var totalVagasocupadas = 0;
+        document.getElementById("texto1").innerHTML ="<h3 style='margin-top: 0%; margin-bottom: 0%;'>Vagas livres: "+totalVagaslivres+"</h3><h3>Vagas ocupadas: "+totalVagasocupadas+"</h3>";
+        
         var dadosVagas = [];    //Vaga, Placa, Modelo, Hora, Minuto
 
         var vagaSelecionada = "";
@@ -274,19 +278,37 @@
             //simula um click na vaga para mostrar os dados logo após adicionar
             document.getElementById(vagaSelecionada).click();
 
+            //atualiza total vagas livres
+            totalVagaslivres = totalVagaslivres - 1;
+            totalVagasocupadas = totalVagasocupadas + 1;
+            document.getElementById("texto1").innerHTML ="<h3 style='margin-top: 0%; margin-bottom: 0%;'>Vagas livres: "+totalVagaslivres+"</h3><h3>Vagas ocupadas: "+totalVagasocupadas+"</h3>";
+
             // impede o envio do form
             e.preventDefault();
         });
         
-        function adicionarCarro(vagaSelecionada){
+        /*function adicionarCarro(vagaSelecionada){
             var img = document.getElementById(vagaSelecionada);
             img.src = "https://image.flaticon.com/icons/png/512/89/89111.png";
         }
-
+        */
         function removerCarro(vagaSelecionada){
 
             var img = document.getElementById(vagaSelecionada);
             img.src = "https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png";
+
+            //atualiza total vagas livres
+            totalVagaslivres = totalVagaslivres + 1;
+            totalVagasocupadas = totalVagasocupadas - 1;
+            document.getElementById("texto1").innerHTML ="<h3 style='margin-top: 0%; margin-bottom: 0%;'>Vagas livres: "+totalVagaslivres+"</h3><h3>Vagas ocupadas: "+totalVagasocupadas+"</h3>";
+            
+            //remove os dados da vaga do array
+            var n = 5
+            var pos = dadosVagas.indexOf(vagaSelecionada);
+            dadosVagas.splice(pos, n); 
+
+            //simula um click na vaga para mostrar os dados logo após adicionar
+            document.getElementById(vagaSelecionada).click();
             
         }
 
@@ -312,8 +334,9 @@
                 document.getElementById("divBot1").style.display = 'none';
 
                 //mostra os dados da vaga
-                document.getElementById("texto").innerHTML = "<h3 style='margin-top: 0%;'>Dados da vaga selecionada</h3><p>Vaga: "+el+"</p><p>Placa: -</p><p>Modelo: -</p><p>Hora que chegou: 00:00</p><p>Tempo que está aqui: 00:00</p><p>Valor a pagar: R$ 0,00</p>";
+                document.getElementById("texto").innerHTML = "<h3 style='margin-top: 0%;'>Dados da vaga selecionada</h3><p>Vaga: "+el+"</p><p>Placa: -</p><p>Modelo: -</p><p>Hora que chegou: 00:00</p>";
 
+                //insere os dados da vaga selecionada e hora que chegou no modal de adicionar
                 document.getElementById("vaga").innerHTML = "Vaga: "+el;
                 document.getElementById("tempo").innerHTML = "Hora que chegou: "+horas+":"+minutos;
                 
@@ -333,8 +356,17 @@
                 var hora = dadosVagas[pos+3];
                 var minuto = dadosVagas[pos+4];
 
+                /*
+                se hora < 1  == 3,50
+                se hora <= 2 e > 1 == 5,00 * hora
+                se hora > 2 == 3 * hora
+                
+
+                var horafin = parseint(horas) - parseint(hora);
+                var minfin = parseint(minutos) - parseint(minutos);
+                */
                 //mostra os dados da vaga
-                document.getElementById("texto").innerHTML = "<h3 style='margin-top: 0%;'>Dados da vaga selecionada</h3><p>Vaga: "+vaga+"</p><p>Placa: "+placa+"</p><p>Modelo: "+modelo+"</p><p>Hora que chegou: "+hora+":"+minuto+"</p><p>Tempo que está aqui: ainda não</p><p>Valor a pagar: R$ 0,00</p>";
+                document.getElementById("texto").innerHTML = "<h3 style='margin-top: 0%;'>Dados da vaga selecionada</h3><p>Vaga: "+vaga+"</p><p>Placa: "+placa+"</p><p>Modelo: "+modelo+"</p><p>Hora que chegou: "+hora+":"+minuto+"</p>";
         
                 }
 
@@ -356,44 +388,14 @@
             setInterval(relogio, 60000);
         }
 
-        
 
 
-
-
-        /*function mostraDados(){
-
-            var el = document.getElementById('fora');
-                el.addEventListener('click', function(e) {
-                alert(e.target.id);
-                });
-
-            
-        
-            var data = new Date();
-            var horas = data.getHours();
-            var minutos = data.getMinutes ();
-
-            if (horas <10 ) {
-                horas= "0"+ horas;
-            }
-            if (minutos <10) {
-                minutos = "0"+ minutos;
-            }
-
-            document.getElementById("texto").innerHTML = "<h3 style='margin-top: 0%;'>Dados da vaga selecionada</h3><p>Placa: AXT-1775</p><p>Modelo: Tucson</p><p>Vaga: 7E</p><p>Hora que chegou: "+horas+":"+minutos+"</p><p>Tempo que está aqui: "+horas+":"+minutos+"</p><p>Valor a pagar: R$ 0,00</p>";
-        
-        }*/
-        
-
-        
-
-
-        var modal = document.getElementById("myModal");
-
+/*********************************************************************
+                Modal de adicionar
+***********************************************************************/
+        var modal = document.getElementById("modalAdicionar");
 
         var btn = document.getElementById("Bot");
-
 
         var span = document.getElementsByClassName("close")[0];
 
@@ -401,17 +403,24 @@
         modal.style.display = "block";
         }
 
-
         span.onclick = function() {
         modal.style.display = "none";
         }
-
 
         window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
         }
+
+
+
+/*********************************************************************
+                Modal de remover
+***********************************************************************/
+
+
+
 </script>
 
 
