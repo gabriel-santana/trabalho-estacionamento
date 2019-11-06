@@ -208,20 +208,29 @@
         <h1>Adicionar Carro</h1>
       </div>
       <div class="modal-body">
-        <p>Placa: </p><input type="text" name="placa">
-        <p>Modelo: </p><input type="text" name="modelo">
+        <form id="formulario">
+        <p>Placa: </p><input type="text" name="placa" id="placa">
+        <p>Modelo: </p><input type="text" name="modelo" id="modelo">
         <p id="tempo"></p>
         <p id="vaga"></p>
+        <input type="submit" value="Adicionar">
+        </form>
       </div>
       <div class="modal-footer">
-        <button>Adicionar</button>
+        
       </div>
     </div>
   
   </div>
 
     <script>
-        
+        function Dados(_vaga,_placa,_modelo,_hora,_minuto) {
+            this.Vaga = _vaga;
+            this.Placa = _placa;
+            this.Modelo = _modelo;
+            this.Hora = _hora;
+            this.Minuto = _minuto;
+        }        
 
         var vagaSelecionada = "";
 
@@ -231,6 +240,20 @@
                     vagaSelecionada = e.target.id;
                     
             });
+
+        var form = document.getElementById('formulario');
+        var placa = document.getElementById('placa');
+        var modelo = document.getElementById('modelo');
+
+
+        form.addEventListener('submit', function(e) {
+            // alerta o valor do campo
+            alert(placa.value);
+            alert(modelo.value);
+
+            // impede o envio do form
+            e.preventDefault();
+        });
         
         function adicionarCarro(vagaSelecionada){
             var img = document.getElementById(vagaSelecionada);
@@ -326,6 +349,8 @@
             vaga: "Não informado",
             tempo: [0,0,0]
         }
+
+
 
         
 
