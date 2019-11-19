@@ -21,7 +21,7 @@
         
         </div>
         <div id="divBot1">
-        <button class="button1" id="Bot1" >
+        <button class="button1" id="Bot1" onclick="removerCarro(vagaSelecionada)">
             <span>
             <img src="https://image.flaticon.com/icons/png/512/89/89111.png" alt="Remover carro" width="25px" height="25px">
             <img src="menos.png" alt="Remover carro" width="10px" height="10px" class="plus">
@@ -205,13 +205,15 @@
       <div class="modal-header">
         <span class="close">&times;</span>
         <h1>Carro Chegando</h1>
+        <p>Insira os dados a seguir:</p>
       </div>
       <div class="modal-body">
         <form id="formulario">
-        <p>Placa: </p><input type="text" name="placa" id="placa">
-        <p>Modelo: </p><input type="text" name="modelo" id="modelo">
+        <p>Placa: </p><input type="text" name="placa" id="placa" required="required"/><span class="required"> *</span>
+        <p>Modelo: </p><input type="text" name="modelo" id="modelo" required="required"/><span class="required"> *</span>
         <p id="tempo"></p>
         <p id="vaga"></p>
+        <br>
         <input type="submit" value="Adicionar">
         </form>
       </div>
@@ -231,7 +233,7 @@
         <h1>Carro Saindo</h1>
       </div>
       <div class="modal-body">
-        <p>O cliente ficou tanto tempo e isso custa tanto</p>
+        <p id="result"></p>
 
       </div>
       <div class="modal-footer">
@@ -260,6 +262,9 @@
         var form = document.getElementById('formulario');
         var placa = document.getElementById('placa');
         var modelo = document.getElementById('modelo');
+
+
+        
 
 
         form.addEventListener('submit', function(e) {
@@ -305,28 +310,34 @@
             // impede o envio do form
             e.preventDefault();
         });
-        
-        /*function adicionarCarro(vagaSelecionada){
-            var img = document.getElementById(vagaSelecionada);
-            img.src = "https://image.flaticon.com/icons/png/512/89/89111.png";
-        }
-        */
+
+
+
         function removerCarro(vagaSelecionada){
 
-            var img = document.getElementById(vagaSelecionada);
-            img.src = "https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png";
 
             //atualiza total vagas livres
             totalVagaslivres = totalVagaslivres + 1;
             totalVagasocupadas = totalVagasocupadas - 1;
             document.getElementById("texto1").innerHTML ="<h3 style='margin-top: 0%; margin-bottom: 0%;'>Vagas livres: "+totalVagaslivres+"</h3><h3>Vagas ocupadas: "+totalVagasocupadas+"</h3>";
             
+                
+
+            //altera a imagem da vaga selecionada para a placa de transito
+            var img = document.getElementById(vagaSelecionada);
+            img.src = "https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png"
+
+
             //remove os dados da vaga do array
             var n = 5
             var pos = dadosVagas.indexOf(vagaSelecionada);
             dadosVagas.splice(pos, n); 
 
-            //simula um click na vaga para mostrar os dados logo após adicionar
+
+            //mostra o modal de remover
+            modal1.style.display = "block";
+
+            //simula um click na vaga para mostrar os dados logo após remover
             document.getElementById(vagaSelecionada).click();
             
         }
@@ -335,18 +346,21 @@
 
 
         function mostraDados(el) {
+            var data = new Date();
+            var horas = data.getHours();
+            var minutos = data.getMinutes ();
+            
+            if (horas <10 ) {
+                horas= "0"+ horas;
+            }
+            if (minutos <10) {
+                minutos = "0"+ minutos;
+            }
+
+            //verifica o source da imagem que foi clicada
             var src = document.getElementById(el).src;
             if(src == 'https://imagepng.org/wp-content/uploads/2017/10/placa-estacionamento-estacionar.png'){
-                var data = new Date();
-                var horas = data.getHours();
-                var minutos = data.getMinutes ();
-                
-                if (horas <10 ) {
-                    horas= "0"+ horas;
-                }
-                if (minutos <10) {
-                    minutos = "0"+ minutos;
-                }
+
                 
                 //mostra o botão de adicionar se a imagem clicada for da placa
                 document.getElementById("divBot").style.display = 'block'; 
@@ -359,10 +373,8 @@
                 document.getElementById("vaga").innerHTML = "Vaga: "+el;
                 document.getElementById("tempo").innerHTML = "Hora que chegou: "+horas+":"+minutos;
                 
-
                 }
             else{
-
                 //mostra o botão de remover se a imagem clicada for do carro
                 document.getElementById("divBot1").style.display = 'block';
                 document.getElementById("divBot").style.display = 'none'; 
@@ -376,18 +388,36 @@
                 var minuto = dadosVagas[pos+4];
 
                 
-                /*
-                se hora < 1  == 3,50
-                se hora <= 2 e > 1 == 5,00 * hora
-                se hora > 2 == 3 * hora
-                
 
-                var horafin = parseint(horas) - parseint(hora);
-                var minfin = parseint(minutos) - parseint(minutos);
-                */
                 //mostra os dados da vaga
                 document.getElementById("texto").innerHTML = "<h3 style='margin-top: 0%;'>Dados da vaga selecionada</h3><p>Vaga: "+vaga+"</p><p>Placa: "+placa+"</p><p>Modelo: "+modelo+"</p><p>Hora que chegou: "+hora+":"+minuto+"</p>";
-        
+ 
+                
+                //faz o calculo do tempo que o carro está na vaga
+                var horafin = horas - hora;
+                var minfin = minutos - minuto;
+                if (horafin <10 ) {
+                    horafin= "0"+ horafin;
+                }
+                if (minfin <10) {
+                    minfin = "0"+ minfin;
+                }
+
+                //faz o calculo do valor
+                var valor = 0;
+
+                if(horafin<1){
+                    valor = 3.5;
+                }else if(horafin<=2){
+                    valor = 5;
+                }else{
+                    valor = 3;
+                }
+                var valorFormatado = valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+
+                //alimenta o modal de remover
+                document.getElementById("result").innerHTML = "<h3>A vaga "+vaga+" agora está livre, dados do carro que saiu:</h3><p>Modelo: "+modelo+"</p><p>Placa: "+placa+"</p><p>Hora que chegou: "+hora+":"+minuto+"</p><p>Hora que saiu: "+horas+":"+minutos+"</p><p>Tempo que ficou: "+horafin+":"+minfin+"</p><p>Total a pagar: "+valorFormatado+"</p>";
+                
                 }
 
         }
@@ -440,13 +470,8 @@
         ***********************************************************************/
         var modal1 = document.getElementById("modalRemover");
 
-        var btn1 = document.getElementById("Bot1");
-
         var span1 = document.getElementsByClassName("close1")[0];
 
-        btn1.onclick = function() {
-        modal1.style.display = "block";
-        }
 
         span1.onclick = function() {
         modal1.style.display = "none";
